@@ -20,7 +20,10 @@ Create the students table
 CREATE TABLE students (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 Create the courses table
@@ -28,7 +31,8 @@ Create the courses table
 CREATE TABLE courses (
     id SERIAL PRIMARY KEY,
     course_name VARCHAR(255) NOT NULL,
-    description TEXT
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 Create the enrollments table
@@ -39,7 +43,8 @@ CREATE TABLE enrollments (
     enrollment_date DATE,
     PRIMARY KEY (student_id, course_id),
     FOREIGN KEY (student_id) REFERENCES students (id),
-    FOREIGN KEY (course_id) REFERENCES courses (id)
+    FOREIGN KEY (course_id) REFERENCES courses (id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 run `\dt` to see if all tables were created
