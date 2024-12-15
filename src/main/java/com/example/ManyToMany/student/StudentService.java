@@ -7,13 +7,22 @@ import java.util.List;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository=studentRepository;
-    }
+    private StudentMapper studentMapper;
 
+    public StudentService(StudentRepository studentRepository,StudentMapper studentMapper) {
+        this.studentRepository=studentRepository;
+        this.studentMapper=studentMapper;
+    }
 
     public List<Student> findAllStudents(){
         return studentRepository.findAll();
     }
 
+    public StudentResponseDto saveStudent(
+            StudentDto dto
+    ){
+        Student student=studentMapper.toStudent(dto);
+        Student savedStudent=studentRepository.save(student);
+        return studentMapper.toStudentResponseDto(savedStudent);
+    }
 }

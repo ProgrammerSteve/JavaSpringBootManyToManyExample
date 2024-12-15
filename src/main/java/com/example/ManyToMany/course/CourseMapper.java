@@ -10,7 +10,6 @@ public class CourseMapper {
         course.setId(dto.id());
         course.setCourseName(dto.courseName());
         course.setDescription(dto.description());
-        course.setCreatedAt(dto.createdAt());
         course.setEnrollments(dto.enrollments());
         return course;
     }
