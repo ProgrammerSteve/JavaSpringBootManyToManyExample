@@ -28,4 +28,8 @@ public class EnrollmentService {
         Enrollment savedEnrollment=enrollmentRepository.save(enrollment);
         return enrollmentMapper.toEnrollmentResponseDto(savedEnrollment);
     }
+
+    public void deleteEnrollmentById(int id){
+        enrollmentRepository.deleteById(id);
+    }
 }

@@ -1,11 +1,10 @@
 package com.example.ManyToMany.course;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +26,13 @@ public class CourseController {
             @RequestBody CourseDto dto
     ){
         return courseService.saveCourse(dto);
+    }
+
+    @DeleteMapping("/courses/{course-id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteCourseById(
+            @PathVariable("course-id")int id
+    ){
+        courseService.deleteCourseById(id);
     }
 }
