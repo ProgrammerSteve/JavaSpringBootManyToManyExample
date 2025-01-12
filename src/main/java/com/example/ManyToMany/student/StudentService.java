@@ -16,8 +16,11 @@ public class StudentService {
         this.studentMapper=studentMapper;
     }
 
-    public List<Student> findAllStudents(){
-        return studentRepository.findAll();
+    public List<StudentResponseDto> findAllStudents(){
+        return studentRepository.findAll()
+                .stream()
+                .map(studentMapper::toStudentResponseDto)
+                .toList();
     }
 
     public StudentResponseDto saveStudent(

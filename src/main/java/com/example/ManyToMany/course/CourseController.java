@@ -32,7 +32,7 @@ public class CourseController {
     public CourseResponseDto getCourseById(
             @PathVariable Integer id
     ){
-
+        return courseService.getCourseById(id);
     }
 
     @PostMapping("/courses")

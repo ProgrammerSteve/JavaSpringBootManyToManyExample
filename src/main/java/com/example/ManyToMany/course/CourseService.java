@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,6 +20,15 @@ public class CourseService {
         return courseRepository.findAll()
                 .stream().map(course->courseMapper.toCourseResponseDto(course))
                 .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public CourseResponseDto getCourseById(Integer id){
+        Optional<Course> courseOptional=courseRepository.findById(id);
+        if(courseOptional.isEmpty()){
+            throw new CourseNotFoundException("Course by id:"+id+" was not found");
+        }
+        return courseMapper.toCourseResponseDto(courseOptional.get());
+
     }
 
     public CourseResponseDto saveCourse(CourseDto dto){

@@ -1,4 +1,4 @@
-package com.example.ManyToMany.course;
+package com.example.ManyToMany.enrollment;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,17 +9,13 @@ import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CourseServiceTest {
-
+class EnrollmentServiceTest {
     @InjectMocks
-    private CourseService courseService;
-
+    private EnrollmentService enrollmentService;
     @Mock
-    private CourseRepository courseRepository;
-
+    private EnrollmentMapper enrollmentMapper;
     @Mock
-    private CourseMapper courseMapper;
-
+    private EnrollmentRepository enrollmentRepository;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -28,13 +24,13 @@ class CourseServiceTest {
     @AfterEach
     void tearDown() {
     }
-
     @Test
-    void findAllCourses() {
-
+    void getAllEnrollments() {
     }
-
     @Test
-    void saveCourse() {
+    void saveEnrollment() {
+    }
+    @Test
+    void deleteEnrollmentById() {
     }
 }

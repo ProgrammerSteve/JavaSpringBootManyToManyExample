@@ -40,4 +40,9 @@ public class EnrollmentService {
     }
 
 
+    public List<List<Integer>> splitIntoBatches(List<Integer> idList, int batchSize){
+
+    }
+
+
 }
