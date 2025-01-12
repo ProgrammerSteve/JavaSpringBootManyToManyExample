@@ -5,6 +5,10 @@ import com.example.ManyToMany.student.Student;
 
 import java.time.LocalDateTime;
 
-public record EnrollmentResponseDto(Integer id, Student student, Course course, LocalDateTime enrollmentDate) {
-
-}
+public record EnrollmentResponseDto(
+        Integer id,
+        Student student,
+        Course course,
+        Float grade,
+        LocalDateTime enrollmentDate
+) {}

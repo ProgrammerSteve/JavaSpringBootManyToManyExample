@@ -8,6 +8,7 @@ public class StudentMapper {
         student.setEmail(dto.email());
         student.setRole(dto.role());
         student.setPassword(dto.password());
+        student.setAcademicProbation(dto.academicProbation());
         student.setEnrollments(dto.enrollments());
         return student;
     }
@@ -19,6 +20,7 @@ public class StudentMapper {
                 student.getEmail(),
                 student.getRole(),
                 student.getPassword(),
+                student.isAcademicProbation(),
                 student.getEnrollments()
         );
     }

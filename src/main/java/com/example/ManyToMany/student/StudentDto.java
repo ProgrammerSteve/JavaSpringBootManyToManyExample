@@ -11,6 +11,7 @@ public record StudentDto(
         String email,
         String password,
         String role,
+        boolean academicProbation,
         Set<Enrollment> enrollments
 ) {
 }

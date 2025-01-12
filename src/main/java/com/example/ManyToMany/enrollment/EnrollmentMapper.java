@@ -10,6 +10,8 @@ public class EnrollmentMapper {
         enrollment.setId(dto.id());
         enrollment.setStudent(dto.student());
         enrollment.setCourse(dto.course());
+        enrollment.setGrade(dto.grade());
+
         enrollment.setEnrollmentDate(dto.enrollmentDate());
         return enrollment;
     }
@@ -19,6 +21,8 @@ public class EnrollmentMapper {
                 enrollment.getId(),
                 enrollment.getStudent(),
                 enrollment.getCourse(),
+                enrollment.getGrade(),
+
                 enrollment.getEnrollmentDate()
                 );
     }

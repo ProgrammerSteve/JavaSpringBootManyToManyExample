@@ -29,7 +29,11 @@ public class EnrollmentService {
         return enrollmentMapper.toEnrollmentResponseDto(savedEnrollment);
     }
 
+
+
     public void deleteEnrollmentById(int id){
         enrollmentRepository.deleteById(id);
     }
+
+
 }

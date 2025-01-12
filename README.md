@@ -23,6 +23,7 @@ CREATE TABLE students (
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    academic_probation BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
@@ -41,6 +42,7 @@ CREATE TABLE enrollments (
     student_id INTEGER NOT NULL,
     course_id INTEGER NOT NULL,
     enrollment_date DATE,
+    grade REAL,
     PRIMARY KEY (student_id, course_id),
     FOREIGN KEY (student_id) REFERENCES students (id),
     FOREIGN KEY (course_id) REFERENCES courses (id),

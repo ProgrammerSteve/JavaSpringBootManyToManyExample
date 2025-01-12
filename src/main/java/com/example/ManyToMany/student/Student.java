@@ -36,6 +36,9 @@ public class Student {
     )
     private String role;
 
+    @Column(name="academic_probation")
+    private boolean academicProbation;
+
     @OneToMany(mappedBy = "student")
     private Set<Enrollment> enrollments;
 

@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,7 +28,11 @@ public class Enrollment {
     @JoinColumn(name = "course_id",nullable = false)
     private Course course;
 
-    private LocalDate enrollmentDate;
+    @Column(name="enrollment_date")
+    private LocalDateTime enrollmentDate;
+
+    @Column(name="grade")
+    private Float grade;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

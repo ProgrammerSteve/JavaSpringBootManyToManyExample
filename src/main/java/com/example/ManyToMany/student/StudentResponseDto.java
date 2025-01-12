@@ -10,6 +10,7 @@ public record StudentResponseDto(
         String email,
         String password,
         String role,
+        boolean academicProbation,
         Set<Enrollment> enrollments
 ) {
 }
