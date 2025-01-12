@@ -21,6 +21,20 @@ public class CourseController {
         return courseService.findAllCourses();
     }
 
+    @PostMapping("/get-course-average")
+    public Float getCourseAverage(
+            @RequestBody CourseDto dto
+    ){
+        return courseService.getCourseGradeAverage(dto);
+    }
+
+    @GetMapping("/courses/{course-id}")
+    public CourseResponseDto getCourseById(
+            @PathVariable Integer id
+    ){
+
+    }
+
     @PostMapping("/courses")
     public CourseResponseDto saveCourse(
             @RequestBody CourseDto dto

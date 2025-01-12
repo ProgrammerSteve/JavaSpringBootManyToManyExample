@@ -1,5 +1,6 @@
 package com.example.ManyToMany.student;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +38,18 @@ public class StudentService {
 
     public void deleteStudentById(int id){
         studentRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateAllAcademicProbationStatus() {
+        studentRepository.findAll().parallelStream().forEach(student -> {
+            boolean onProbation = student.getEnrollments().stream().anyMatch(
+                    enrollment -> enrollment.getGrade() != null && enrollment.getGrade() < 70.0
+            );
+            if (student.isAcademicProbation() != onProbation) {
+                student.setAcademicProbation(onProbation);
+                studentRepository.save(student);
+            }
+        });
     }
 }

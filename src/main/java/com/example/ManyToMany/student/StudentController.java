@@ -25,6 +25,11 @@ public class StudentController {
         return studentService.saveStudent(dto);
     }
 
+    @GetMapping("/update-academic-probation-all")
+    public void updateAcademicProbationAll(){
+        studentService.updateAllAcademicProbationStatus();
+    }
+
     @DeleteMapping("/students/{student-id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudentById(

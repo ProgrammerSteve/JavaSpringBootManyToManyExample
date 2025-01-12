@@ -27,6 +27,14 @@ public class CourseService {
         return courseMapper.toCourseResponseDto(savedCourse);
     }
 
+    public Float getCourseGradeAverage(CourseDto dto){
+        Course course=courseMapper.toCourse(dto);
+        List<Float>grades=course.getEnrollments().stream().map(enrollment -> enrollment.getGrade()).collect(Collectors.toList());
+        float sum = grades.stream().reduce(0f, Float::sum);
+        int count = grades.size();
+        return (count > 0) ? sum / count : 0f;
+    }
+
 
     public void deleteCourseById(int id){
         courseRepository.deleteById(id);
