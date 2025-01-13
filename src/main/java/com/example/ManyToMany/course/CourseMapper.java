@@ -14,6 +14,14 @@ public class CourseMapper {
         return course;
     }
 
+    public Course toCourseNullId(CourseCreateDto dto){
+        Course course=new Course();
+        course.setCourseName(dto.courseName());
+        course.setDescription(dto.description());
+        course.setEnrollments(dto.enrollments());
+        return course;
+    }
+
     public CourseResponseDto toCourseResponseDto(Course course){
         return new CourseResponseDto(
                 course.getId(), course.getCourseName(), course.getDescription(), course.getEnrollments()

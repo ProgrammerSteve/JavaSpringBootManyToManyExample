@@ -31,8 +31,8 @@ public class CourseService {
 
     }
 
-    public CourseResponseDto saveCourse(CourseDto dto){
-        Course course=courseMapper.toCourse(dto);
+    public CourseResponseDto saveCourse(CourseCreateDto dto){
+        Course course=courseMapper.toCourseNullId(dto);
         Course savedCourse= courseRepository.save(course);
         return courseMapper.toCourseResponseDto(savedCourse);
     }

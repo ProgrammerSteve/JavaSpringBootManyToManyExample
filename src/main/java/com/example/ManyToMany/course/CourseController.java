@@ -37,7 +37,7 @@ public class CourseController {
 
     @PostMapping("/courses")
     public CourseResponseDto saveCourse(
-            @RequestBody CourseDto dto
+            @RequestBody CourseCreateDto dto
     ){
         return courseService.saveCourse(dto);
     }

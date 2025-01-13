@@ -20,10 +20,6 @@ class EnrollmentServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-
-    @AfterEach
-    void tearDown() {
-    }
     @Test
     void getAllEnrollments() {
     }
