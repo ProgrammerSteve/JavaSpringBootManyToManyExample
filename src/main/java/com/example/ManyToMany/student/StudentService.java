@@ -24,6 +24,14 @@ public class StudentService {
     }
 
     public StudentResponseDto saveStudent(
+            StudentCreateDto dto
+    ){
+        Student student=studentMapper.toStudentNullId(dto);
+        Student savedStudent=studentRepository.save(student);
+        return studentMapper.toStudentResponseDto(savedStudent);
+    }
+
+    public StudentResponseDto updateStudent(
             StudentDto dto
     ){
         Student student=studentMapper.toStudent(dto);

@@ -23,26 +23,22 @@ public class EnrollmentService {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public EnrollmentResponseDto saveEnrollment(EnrollmentDto dto){
-        Enrollment enrollment=enrollmentMapper.toEnrollment(dto);
+    public EnrollmentResponseDto saveEnrollment(EnrollmentCreateDto dto){
+        Enrollment enrollment=enrollmentMapper.toEnrollmentNullId(dto);
         Enrollment savedEnrollment=enrollmentRepository.save(enrollment);
         return enrollmentMapper.toEnrollmentResponseDto(savedEnrollment);
     }
-
-
-
-
-
-
+    public EnrollmentResponseDto updateEnrollment(EnrollmentDto dto){
+        Enrollment enrollment=enrollmentMapper.toEnrollment(dto);
+        Enrollment updatedEnrollment=enrollmentRepository.save(enrollment);
+        return enrollmentMapper.toEnrollmentResponseDto(updatedEnrollment);
+    }
 
     public void deleteEnrollmentById(int id){
         enrollmentRepository.deleteById(id);
     }
 
-
-    public List<List<Integer>> splitIntoBatches(List<Integer> idList, int batchSize){
-
-    }
-
-
+//    public List<List<Integer>> splitIntoBatches(List<Integer> idList, int batchSize){
+//
+//    }
 }

@@ -42,6 +42,13 @@ public class CourseController {
         return courseService.saveCourse(dto);
     }
 
+    @PutMapping("/courses")
+    public CourseResponseDto updateCourse(
+            @RequestBody CourseDto dto
+    ){
+        return courseService.updateCourse(dto);
+    }
+
     @DeleteMapping("/courses/{course-id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteCourseById(

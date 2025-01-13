@@ -20,9 +20,16 @@ public class StudentController {
 
     @PostMapping("/students")
     public StudentResponseDto saveStudent(
-            @RequestBody StudentDto dto
+            @RequestBody StudentCreateDto dto
     ){
         return studentService.saveStudent(dto);
+    }
+
+    @PutMapping("/students")
+    public StudentResponseDto updateStudent(
+        @RequestBody StudentDto dto
+    ){
+        return studentService.updateStudent(dto);
     }
 
     @GetMapping("/update-academic-probation-all")

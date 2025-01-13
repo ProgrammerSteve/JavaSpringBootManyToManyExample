@@ -19,9 +19,16 @@ public class EnrollmentController {
 
     @PostMapping("/enrollments")
     public EnrollmentResponseDto saveEnrollment(
-        @RequestBody EnrollmentDto dto
+        @RequestBody EnrollmentCreateDto dto
     ){
         return enrollmentService.saveEnrollment(dto);
+    }
+
+    @PutMapping("/enrollments")
+    public EnrollmentResponseDto updateEnrollment(
+            @RequestBody EnrollmentDto dto
+    ){
+        return enrollmentService.updateEnrollment(dto);
     }
 
     @DeleteMapping("/enrollments/{enrollment-id}")

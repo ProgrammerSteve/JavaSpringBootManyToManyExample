@@ -91,6 +91,25 @@ class CourseServiceTest {
     }
 
     @Test
+    void updateCourse() {
+        CourseDto requestDto = new CourseDto(123,"History", "World History Course",new HashSet<Enrollment>());
+        Course course = new Course(null,"History", "World History Course", new HashSet<>(), LocalDateTime.now());
+        Course savedCourse = new Course(1, "History", "World History Course", new HashSet<>(), LocalDateTime.now());
+        CourseResponseDto responseDto = new CourseResponseDto(1, "History", "World History Course", new HashSet<>());
+
+        Mockito.when(courseMapper.toCourse(requestDto)).thenReturn(course);
+        Mockito.when(courseRepository.save(course)).thenReturn(savedCourse);
+        Mockito.when(courseMapper.toCourseResponseDto(savedCourse)).thenReturn(responseDto);
+
+        CourseResponseDto result = courseService.updateCourse(requestDto);
+        assertEquals(responseDto, result);
+
+        Mockito.verify(courseMapper, Mockito.times(1)).toCourse(requestDto);
+        Mockito.verify(courseRepository, Mockito.times(1)).save(course);
+        Mockito.verify(courseMapper, Mockito.times(1)).toCourseResponseDto(savedCourse);
+    }
+
+    @Test
     void getCourseGradeAverage() {
         int courseId = 1;
         Enrollment enrollment1 = new Enrollment(1, null, null, LocalDateTime.now(), 85.0f, LocalDateTime.now());

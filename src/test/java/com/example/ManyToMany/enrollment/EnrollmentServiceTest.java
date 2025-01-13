@@ -27,6 +27,10 @@ class EnrollmentServiceTest {
     void saveEnrollment() {
     }
     @Test
+    void updateEnrollment(){
+
+    }
+    @Test
     void deleteEnrollmentById() {
     }
 }

@@ -94,6 +94,60 @@ class StudentServiceTest {
     @Test
     void saveStudent() {
         LocalDateTime now=LocalDateTime.now();
+        StudentCreateDto dto=new StudentCreateDto(
+                "John",
+                "test@test.com",
+                "123",
+                "senior",
+                false,
+                new HashSet<>());
+
+        Student student= new Student(
+                "John",
+                "test@test.com",
+                "123",
+                "senior",
+                new HashSet<>(),
+                now
+        );
+        Student savedStudent= new Student(
+                123,
+                "John",
+                "test@test.com",
+                "123",
+                "senior",
+                false,
+                new HashSet<>(),
+                now
+        );
+        StudentResponseDto responseStudent=new StudentResponseDto(
+                123,
+                "John",
+                "test@test.com",
+                "123",
+                "senior",
+                false,
+                new HashSet<>()
+        );
+        Mockito.when(studentMapper.toStudentNullId(dto)).thenReturn(student);
+        Mockito.when(studentRepository.save(student)).thenReturn(savedStudent);
+        Mockito.when(studentMapper.toStudentResponseDto(savedStudent)).thenReturn(responseStudent);
+
+        StudentResponseDto testResponseDto=studentService.saveStudent(dto);
+
+        Assertions.assertEquals(dto.name(),testResponseDto.name(),"names should match");
+        Assertions.assertEquals(dto.password(),testResponseDto.password());
+        Assertions.assertEquals(dto.email(),testResponseDto.email());
+        Assertions.assertEquals(dto.academicProbation(),testResponseDto.academicProbation());
+
+        Mockito.verify(studentMapper,Mockito.times(1)).toStudentNullId(dto);
+        Mockito.verify(studentRepository,Mockito.times(1)).save(student);
+        Mockito.verify(studentMapper,Mockito.times(1)).toStudentResponseDto(savedStudent);
+    }
+
+    @Test
+    void updateStudent(){
+        LocalDateTime now=LocalDateTime.now();
         StudentDto dto=new StudentDto(
                 123,
                 "John",
@@ -102,6 +156,7 @@ class StudentServiceTest {
                 "senior",
                 false,
                 new HashSet<>());
+
         Student student= new Student(
                 "John",
                 "test@test.com",
@@ -133,8 +188,9 @@ class StudentServiceTest {
         Mockito.when(studentRepository.save(student)).thenReturn(savedStudent);
         Mockito.when(studentMapper.toStudentResponseDto(savedStudent)).thenReturn(responseStudent);
 
-        StudentResponseDto testResponseDto=studentService.saveStudent(dto);
+        StudentResponseDto testResponseDto=studentService.updateStudent(dto);
 
+        Assertions.assertEquals(dto.id(),testResponseDto.id(),"id should match");
         Assertions.assertEquals(dto.name(),testResponseDto.name(),"names should match");
         Assertions.assertEquals(dto.password(),testResponseDto.password());
         Assertions.assertEquals(dto.email(),testResponseDto.email());

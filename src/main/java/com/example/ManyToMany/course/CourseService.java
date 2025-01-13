@@ -37,6 +37,12 @@ public class CourseService {
         return courseMapper.toCourseResponseDto(savedCourse);
     }
 
+    public CourseResponseDto updateCourse(CourseDto dto){
+        Course course=courseMapper.toCourse(dto);
+        Course savedCourse= courseRepository.save(course);
+        return courseMapper.toCourseResponseDto(savedCourse);
+    }
+
     public Float getCourseGradeAverage(CourseDto dto){
         Course course=courseMapper.toCourse(dto);
         List<Float>grades=course.getEnrollments().stream().map(enrollment -> enrollment.getGrade()).collect(Collectors.toList());
