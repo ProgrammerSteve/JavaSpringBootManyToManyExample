@@ -14,7 +14,6 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 @Entity
 public class Student {
@@ -40,7 +39,7 @@ public class Student {
     private String role;
 
     @Column(name="academic_probation")
-    private boolean academicProbation;
+    private boolean academicProbation=false;
 
     @OneToMany(mappedBy = "student")
     private Set<Enrollment> enrollments;
@@ -48,24 +47,4 @@ public class Student {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
-
-    public Student(
-            String name,
-            String email,
-            String password,
-            String role,
-            HashSet<Enrollment> enrollments,
-            LocalDateTime createdAt
-    ) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.academicProbation=false;
-        this.enrollments=enrollments;
-        this.createdAt=createdAt;
-    }
-
-
 }

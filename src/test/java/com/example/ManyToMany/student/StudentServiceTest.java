@@ -102,12 +102,15 @@ class StudentServiceTest {
                 false,
                 new HashSet<>());
 
+        Integer nullId=null;
         Student student= new Student(
+                nullId,
                 "John",
                 "test@test.com",
                 "123",
                 "senior",
-                new HashSet<>(),
+                false,
+                new HashSet<Enrollment>(),
                 now
         );
         Student savedStudent= new Student(
@@ -158,10 +161,12 @@ class StudentServiceTest {
                 new HashSet<>());
 
         Student student= new Student(
+                null,
                 "John",
                 "test@test.com",
                 "123",
                 "senior",
+                false,
                 new HashSet<>(),
                 now
         );

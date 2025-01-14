@@ -10,10 +10,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 public class Course {
     @Id
     @GeneratedValue
@@ -30,5 +31,10 @@ public class Course {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+
+//    public Set<Enrollment> getEnrollments() {
+//        return enrollments;
+//    }
 }
 
